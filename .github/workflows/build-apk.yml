@@ -45,6 +45,7 @@ jobs:
         working-directory: extracted/mmp_work
         run: |
           echo "android.useAndroidX=true" >> gradle.properties
+          echo "kotlin.jvm.target.validation.mode=ignore" >> gradle.properties
           gradle --no-daemon :app:assembleDebug
 
       - name: Prepare APK
