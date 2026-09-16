@@ -36,7 +36,7 @@ jobs:
       - name: Extract MMP project
         run: |
           mkdir extracted
-          ARCHIVE=$(find . -maxdepth 1 -type f ! -name "README.md" | head -n 1)
+          ARCHIVE=$(find . -maxdepth 1 -type f -name '*.zip' | head -n 1)
           echo "Using archive: $ARCHIVE"
           unzip -q "$ARCHIVE" -d extracted
           find extracted -maxdepth 3 -type f | head -50
@@ -44,6 +44,7 @@ jobs:
       - name: Build APK
         working-directory: extracted/mmp_work
         run: |
+          echo "android.useAndroidX=true" >> gradle.properties
           gradle --no-daemon :app:assembleDebug
 
       - name: Prepare APK
