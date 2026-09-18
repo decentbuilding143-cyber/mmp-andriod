@@ -36,7 +36,7 @@ jobs:
       - name: Extract MMP project
         run: |
           mkdir extracted
-          ARCHIVE="./mmp-android-cloud-build-1-fixed.zip"
+          ARCHIVE="./mmp-android-cloud-build-1-fixed.zip-v2.zip
           echo "Using archive: $ARCHIVE"
           unzip -q "$ARCHIVE" -d extracted
           find extracted -maxdepth 3 -type f | head -50
